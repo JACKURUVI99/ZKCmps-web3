@@ -87,21 +87,25 @@ See [docs/architecture.md](docs/architecture.md) for the full system design,
 [docs/security.md](docs/security.md) for the threat-model and controls, and
 [docs/roadmap.md](docs/roadmap.md) for the phased development timeline.
 
-## Repository layout (planned)
+## Repository layout
 
 ```
-contracts/     IdentityRegistry.sol, CredentialRegistry.sol, Verifier.sol,
-               Revocation.sol, AccessManager.sol
-circuits/      Circom / Halo2 / Noir circuits, recursive aggregation (Nova)
-backend/       Rust (Axum) API — issuance, proof coordination, revocation
-frontend/      Next.js + TypeScript + Tailwind + RainbowKit + Wagmi wallet UI
+contracts/     Hardhat project. AccessManager + IdentityRegistry implemented
+               (Module 1); CredentialRegistry, Verifier, Revocation stubbed
+               with fixed external interfaces for later phases.
+circuits/      Circom / Halo2 / Noir circuits, recursive aggregation (Nova).
+               Not started — lands in Phase 3.
+backend/       Rust (Axum) API. Health check + 501 stub routes for
+               issuance/proofs/portals/revocation, each tagged with the
+               phase it lands in.
+frontend/      Next.js + TypeScript + Tailwind + RainbowKit + Wagmi.
+               Wallet-connect landing page implemented.
 docs/          Architecture, module specs, security notes, roadmap
 ```
 
-None of these exist yet — this repository currently contains the
-architecture and module documentation only. See the roadmap for build order.
-
 ## Status
 
-Documentation phase (pre–Phase 1). No contracts, backend, or frontend code
-yet.
+Phase 1 in progress (DID + Wallet). `IdentityRegistry.sol` (Module 1) is
+implemented and tested; the wallet's local encrypted credential storage
+(Module 3) has not started. See [docs/roadmap.md](docs/roadmap.md) for the
+full phase plan.
